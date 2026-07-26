@@ -1,8 +1,22 @@
 ---
-- name: Test connectivity to App Server 1
+- name: Configure App Server 1 Stack
   hosts: stratos
   become: true
 
   tasks:
-    - name: Ping the host
-      ansible.builtin.ping:
+    - name: Install httpd package
+      ansible.builtin.package:
+        name: httpd
+        state: present
+
+    - name: Ensure httpd service is running and enabled
+      ansible.builtin.service:
+        name: httpd
+        state: started
+        enabled: true
+
+    - name: Create an empty file /tmp/file.txt
+      ansible.builtin.file:
+        path: /tmp/file.txt
+        state: touch
+        mode: '0644'
