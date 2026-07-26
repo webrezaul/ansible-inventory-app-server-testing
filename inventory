@@ -1,0 +1,2 @@
+[stratos]
+stapp01 ansible_host=stapp01 ansible_user=tony ansible_ssh_pass=Ir0nM@n ansible_connection=ssh ansible_ssh_common_args='-o StrictHostKeyChecking=no'
