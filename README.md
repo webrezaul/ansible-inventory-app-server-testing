@@ -79,6 +79,5 @@ stapp01 ansible_host=stapp01 ansible_user=tony ansible_ssh_pass=Ir0nM@n ansible_
 
 ## ✍️ Author
 
-- **Name**: webrezaul
 - **GitHub**: [webrezaul](https://github.com/webrezaul)
 - **Website**: [mdrezaulkarim.com](https://mdrezaulkarim.com)
