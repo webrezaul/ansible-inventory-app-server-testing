@@ -1,56 +1,16 @@
-# 🚀 Ansible Inventory for Stratos DC App Server 1
+# Ansible Inventory & Playbook Setup – Stratos DC
 
-An Ansible inventory configuration to manage and test connection to **App Server 1 (stapp01)** in **Stratos DC** infrastructure.
+Configured Ansible connectivity from a jump host to app servers in Stratos DC and validated playbook execution against them.
 
----
+## What was done
+- Created INI-style Ansible inventory files (`inventory`) defining app server hosts (e.g. `stapp01`, `stapp02`) with the required connection variables (`ansible_host`, `ansible_user`, `ansible_ssh_pass`, `ansible_connection`, `ansible_ssh_common_args`).
+- Wrote a playbook to create an empty file (`/tmp/file.txt`) on a target app server using the `ansible.builtin.file` module.
+- Ran an existing playbook to install and start the `httpd` service on an app server, confirming successful execution (`failed=0`).
+- Verified all playbooks run cleanly with `ansible-playbook -i inventory playbook.yml`, requiring no extra CLI arguments.
 
-## 📦 Stack / Tech Used
+## Validation
+- Confirmed target file creation via direct SSH check.
+- Confirmed `httpd` package install and active service status.
+- Re-ran playbooks to verify idempotency (`changed=0` on repeat runs).
 
-| Technology   | Version  | Purpose                                      |
-|--------------|----------|----------------------------------------------|
-| Ansible      | `v2.9+`  | Configuration management and task automation |
-| YAML         | `1.2`    | Playbook serialization format                |
-| SSH          | `OpenSSH`| Secure communication channel to App Server 1 |
-
----
-
-## 📁 Project Structure
-
-```
-.
-├── inventory            # Ansible inventory file targeting stapp01
-├── playbook.yml         # Playbook to test connection
-└── README.md            # Documentation
-```
-
----
-
-## ✅ Credentials (Stratos DC Wiki)
-
-| Server | Hostname | Username | Password |
-|--------|----------|----------|----------|
-| App Server 1 | `stapp01` | `tony` | `Ir0nM@n` |
-
----
-
-## 🔧 Inventory Configuration
-
-The `/home/thor/playbook/inventory` file is formatted as:
-```ini
-[stratos]
-stapp01 ansible_host=stapp01 ansible_user=tony ansible_ssh_pass=Ir0nM@n ansible_connection=ssh ansible_ssh_common_args='-o StrictHostKeyChecking=no'
-```
-
----
-
-## 🚀 Usage
-
-Verify connectivity using:
-```bash
-ansible stratos -i inventory -m ping
-```
-
-Run the playbook:
-```bash
-ansible-playbook -i inventory playbook.yml
-```
+**Stack:** Ansible, SSH, Linux (RHEL/CentOS-based app servers)
