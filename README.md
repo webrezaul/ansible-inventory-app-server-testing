@@ -74,3 +74,11 @@ stapp01 ansible_host=stapp01 ansible_user=tony ansible_ssh_pass=Ir0nM@n ansible_
 - **Connection Auditing**: Confirmed target file creation via direct SSH audits.
 - **Service Verification**: Audited package installations and ensured target services are active and running.
 - **Idempotency Audits**: Verified playbook idempotency (`changed=0` on repeat runs).
+
+---
+
+## ✍️ Author
+
+- **Name**: webrezaul
+- **GitHub**: [webrezaul](https://github.com/webrezaul)
+- **Website**: [mdrezaulkarim.com](https://mdrezaulkarim.com)
